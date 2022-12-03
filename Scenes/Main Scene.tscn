@@ -1,0 +1,368 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://bałwan_wmi.png" type="Texture" id=1]
+[ext_resource path="res://tileset_map.tres" type="TileSet" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Map.gd" type="Script" id=4]
+[ext_resource path="res://theme.tres" type="Theme" id=5]
+[ext_resource path="res://Icons/logo.jpg" type="Texture" id=6]
+[ext_resource path="res://Tick.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Icons/Play.png" type="Texture" id=8]
+[ext_resource path="res://Icons/Stop.png" type="Texture" id=9]
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -65505, 4, 0, 196609, 9, 0, 196610, 9, 0, 196611, 9, 0, 196612, 7, 0, 196613, 9, 0, 196614, 9, 0, 196615, 9, 0, 196616, 9, 0, 196617, 9, 0, 196618, 9, 0, 196619, 9, 0, 196620, 9, 0, 196621, 9, 0, 196622, 8, 0, 196623, 9, 0, 196624, 9, 0, 196625, 9, 0, 196626, 9, 0, 196627, 9, 0, 196628, 2, 0, 262145, 9, 0, 262146, 9, 0, 262147, 7, 0, 262148, 8, 0, 262149, 7, 0, 262150, 9, 0, 262151, 9, 0, 262152, 9, 0, 262153, 9, 0, 262154, 9, 0, 262155, 9, 0, 262156, 9, 0, 262157, 9, 0, 262158, 9, 0, 262159, 9, 0, 262160, 9, 0, 262161, 8, 0, 262162, 8, 0, 262163, 8, 0, 262164, 7, 0, 327681, 9, 0, 327682, 9, 0, 327683, 8, 0, 327684, 7, 0, 327685, 9, 0, 327686, 9, 0, 327687, 9, 0, 327688, 8, 0, 327689, 7, 0, 327690, 9, 0, 327691, 9, 0, 327692, 8, 0, 327693, 9, 0, 327694, 9, 0, 327695, 9, 0, 327696, 9, 0, 327697, 8, 0, 327698, 9, 0, 327699, 7, 0, 327700, 7, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 393225, 9, 0, 393226, 8, 0, 393227, 9, 0, 393228, 9, 0, 393229, 9, 0, 393230, 9, 0, 393231, 9, 0, 393232, 9, 0, 393233, 8, 0, 393234, 9, 0, 393235, 8, 0, 393236, 8, 0, 458753, 7, 0, 458754, 9, 0, 458755, 9, 0, 458756, 9, 0, 458757, 9, 0, 458758, 9, 0, 458759, 9, 0, 458760, 8, 0, 458761, 9, 0, 458762, 9, 0, 458763, 7, 0, 458764, 8, 0, 458765, 9, 0, 458766, 9, 0, 458767, 9, 0, 458768, 7, 0, 458769, 8, 0, 458770, 9, 0, 458771, 9, 0, 458772, 9, 0, 524289, 8, 0, 524290, 9, 0, 524291, 9, 0, 524292, 7, 0, 524293, 9, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 8, 0, 524299, 9, 0, 524300, 9, 0, 524301, 9, 0, 524302, 9, 0, 524303, 9, 0, 524304, 9, 0, 524305, 8, 0, 524306, 8, 0, 524307, 8, 0, 524308, 9, 0, 589825, 9, 0, 589826, 9, 0, 589827, 9, 0, 589828, 9, 0, 589829, 9, 0, 589830, 9, 0, 589831, 9, 0, 589832, 8, 0, 589833, 9, 0, 589834, 9, 0, 589835, 9, 0, 589836, 9, 0, 589837, 9, 0, 589838, 9, 0, 589839, 9, 0, 589840, 9, 0, 589841, 9, 0, 589842, 9, 0, 589843, 9, 0, 589844, 9, 0, 655361, 9, 0, 655362, 9, 0, 655363, 9, 0, 655364, 9, 0, 655365, 9, 0, 655366, 9, 0, 655367, 9, 0, 655368, 9, 0, 655369, 9, 0, 655370, 9, 0, 655371, 9, 0, 655372, 9, 0, 655373, 9, 0, 655374, 9, 0, 655375, 9, 0, 655376, 9, 0, 655377, 9, 0, 655378, 9, 0, 655379, 9, 0, 655380, 9, 0, 720897, 9, 0, 720898, 8, 0, 720899, 9, 0, 720900, 9, 0, 720901, 8, 0, 720902, 9, 0, 720903, 8, 0, 720904, 9, 0, 720905, 8, 0, 720906, 9, 0, 720907, 9, 0, 720908, 8, 0, 720909, 9, 0, 720910, 8, 0, 720911, 9, 0, 720912, 9, 0, 720913, 7, 0, 720914, 9, 0, 720915, 9, 0, 720916, 9, 0, 786433, 9, 0, 786434, 7, 0, 786435, 9, 0, 786436, 9, 0, 786437, 8, 0, 786438, 9, 0, 786439, 8, 0, 786440, 9, 0, 786441, 8, 0, 786442, 9, 0, 786443, 8, 0, 786444, 9, 0, 786445, 8, 0, 786446, 9, 0, 786447, 8, 0, 786448, 9, 0, 786449, 8, 0, 786450, 9, 0, 786451, 9, 0, 786452, 8, 0, 851969, 9, 0, 851970, 8, 0, 851971, 9, 0, 851972, 9, 0, 851973, 9, 0, 851974, 8, 0, 851975, 9, 0, 851976, 8, 0, 851977, 9, 0, 851978, 9, 0, 851979, 8, 0, 851980, 9, 0, 851981, 8, 0, 851982, 9, 0, 851983, 8, 0, 851984, 9, 0, 851985, 8, 0, 851986, 9, 0, 851987, 9, 0, 851988, 9, 0, 917505, 5, 0, 917506, 9, 0, 917507, 9, 0, 917508, 9, 0, 917509, 9, 0, 917510, 9, 0, 917511, 7, 0, 917512, 9, 0, 917513, 9, 0, 917514, 9, 0, 917515, 9, 0, 917516, 9, 0, 917517, 9, 0, 917518, 9, 0, 917519, 9, 0, 917520, 9, 0, 917521, 9, 0, 917522, 9, 0, 917523, 9, 0, 917524, 7, 0 )
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CodeFieldBackground" type="ColorRect" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -321.0
+margin_top = 95.0
+margin_right = -31.0
+margin_bottom = -119.0
+focus_mode = 2
+mouse_default_cursor_shape = 1
+theme = ExtResource( 5 )
+color = Color( 0.141176, 0.909804, 0.713726, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CodeField" type="TextEdit" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -320.0
+margin_top = 96.0
+margin_right = -32.0
+margin_bottom = -120.0
+theme = ExtResource( 5 )
+text = "# zaprogramuj trasę, np.:
+# repeat 10 times {
+# 	move_north
+# }"
+highlight_current_line = true
+show_line_numbers = true
+draw_tabs = true
+
+[node name="Rules" type="Label" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = -110.0
+margin_right = -32.0
+margin_bottom = 1.0
+theme = ExtResource( 5 )
+text = "Pomóż bałwanowi z WMiI dostać się do wyjścia!
+Polecania: move_north, move_south, move_east, move_west i repeat n times { }
+Każdy krok kosztuje 50 punktów. Każde poleceni pisz w nowej linii. Za każde serce jest +400 punktów."
+autowrap = true
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -75.0
+margin_right = 72.0
+margin_bottom = 64.0
+theme = ExtResource( 5 )
+text = "WYNIK: 1000"
+align = 1
+valign = 1
+
+[node name="RunButton" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -320.0
+margin_top = 64.0
+margin_right = -176.0
+margin_bottom = 55.0
+theme = ExtResource( 5 )
+text = "Uruchom"
+icon = ExtResource( 8 )
+expand_icon = true
+
+[node name="StopButton" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -176.0
+margin_top = 64.0
+margin_right = -32.0
+margin_bottom = 94.0
+theme = ExtResource( 5 )
+text = "Stop"
+icon = ExtResource( 9 )
+expand_icon = true
+
+[node name="SyntaxErrorDialog" type="AcceptDialog" parent="CanvasLayer"]
+margin_right = 83.0
+margin_bottom = 58.0
+theme = ExtResource( 5 )
+window_title = "Syntax error!"
+
+[node name="EndgameDialog" type="AcceptDialog" parent="CanvasLayer"]
+margin_right = 83.0
+margin_bottom = 58.0
+theme = ExtResource( 5 )
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+margin_left = 66.0
+margin_right = 394.0
+margin_bottom = 64.0
+theme = ExtResource( 5 )
+text = "Byte_IT ProgrUAMowanie22"
+valign = 1
+
+[node name="XAxis" type="Control" parent="CanvasLayer"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 672.0
+margin_bottom = 96.0
+
+[node name="Tick" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+
+[node name="Tick2" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 32.0
+margin_right = 64.0
+text = "2"
+
+[node name="Tick3" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 64.0
+margin_right = 96.0
+text = "3"
+
+[node name="Tick4" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 96.0
+margin_right = 128.0
+text = "4"
+
+[node name="Tick5" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 128.0
+margin_right = 160.0
+text = "5"
+
+[node name="Tick6" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 160.0
+margin_right = 192.0
+text = "6"
+
+[node name="Tick7" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 192.0
+margin_right = 224.0
+text = "7"
+
+[node name="Tick8" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 224.0
+margin_right = 256.0
+text = "8"
+
+[node name="Tick9" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 256.0
+margin_right = 288.0
+text = "9"
+
+[node name="Tick10" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 288.0
+margin_right = 320.0
+text = "10"
+
+[node name="Tick11" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 320.0
+margin_right = 352.0
+text = "11"
+
+[node name="Tick12" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 352.0
+margin_right = 384.0
+text = "12"
+
+[node name="Tick13" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 384.0
+margin_right = 416.0
+text = "13"
+
+[node name="Tick14" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 416.0
+margin_right = 448.0
+text = "14"
+
+[node name="Tick15" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 448.0
+margin_right = 480.0
+text = "15"
+
+[node name="Tick16" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 480.0
+margin_right = 512.0
+text = "16"
+
+[node name="Tick17" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 512.0
+margin_right = 544.0
+text = "17"
+
+[node name="Tick18" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 544.0
+margin_right = 576.0
+text = "18"
+
+[node name="Tick19" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 576.0
+margin_right = 608.0
+text = "19"
+
+[node name="Tick20" parent="CanvasLayer/XAxis" instance=ExtResource( 7 )]
+margin_left = 608.0
+margin_right = 640.0
+text = "20"
+
+[node name="YAxis" type="Control" parent="CanvasLayer"]
+margin_top = 96.0
+margin_right = 32.0
+margin_bottom = 480.0
+
+[node name="Tick" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_bottom = 0.0
+
+[node name="Tick2" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -64.0
+margin_bottom = -32.0
+text = "2"
+
+[node name="Tick3" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -96.0
+margin_bottom = -64.0
+text = "3"
+
+[node name="Tick4" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -128.0
+margin_bottom = -96.0
+text = "4"
+
+[node name="Tick5" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -160.0
+margin_bottom = -128.0
+text = "5"
+
+[node name="Tick6" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -192.0
+margin_bottom = -160.0
+text = "6"
+
+[node name="Tick7" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -224.0
+margin_bottom = -192.0
+text = "7"
+
+[node name="Tick8" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -256.0
+margin_bottom = -224.0
+text = "8"
+
+[node name="Tick9" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -288.0
+margin_bottom = -256.0
+text = "9"
+
+[node name="Tick10" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -320.0
+margin_bottom = -288.0
+text = "10"
+
+[node name="Tick11" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -352.0
+margin_bottom = -320.0
+text = "11"
+
+[node name="Tick12" parent="CanvasLayer/YAxis" instance=ExtResource( 7 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -384.0
+margin_bottom = -352.0
+text = "12"
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 48, 463 )
+script = ExtResource( 3 )
+step_cost = 50
+bonus_score = 400
+
+[node name="Sprite" type="Sprite" parent="Player"]
+z_index = 1
+texture = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 0.2
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[node name="MapBackground" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_top = 95.0
+margin_right = -351.0
+margin_bottom = -119.0
+color = Color( 0.141176, 0.909804, 0.713726, 1 )
+
+[node name="MapBackground2" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 96.0
+margin_right = -352.0
+margin_bottom = -120.0
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[connection signal="pressed" from="CanvasLayer/RunButton" to="Player" method="_on_RunButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/StopButton" to="Player" method="_on_StopButton_pressed"]
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_Timer_timeout"]
