@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Progruamowanie22.icon.png-68d93580187ecc84a15bd4e228d8f745.stex"
+path="res://.import/Progruamowanie22.icon.png-1bf7fa1bae40863007f786b4c869d8ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Builds/HTML/Progruamowanie22.icon.png"
-dest_files=[ "res://.import/Progruamowanie22.icon.png-68d93580187ecc84a15bd4e228d8f745.stex" ]
+source_file="res://Builds/HTML/public/Progruamowanie22.icon.png"
+dest_files=[ "res://.import/Progruamowanie22.icon.png-1bf7fa1bae40863007f786b4c869d8ec.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://bałwan_wmi.png" type="Texture" id=1]
 [ext_resource path="res://tileset_map.tres" type="TileSet" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Tick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Icons/Play.png" type="Texture" id=8]
 [ext_resource path="res://Icons/Stop.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/LeaderBoard.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/WinDialog.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/CodeField.gd" type="Script" id=12]
 
 [node name="Main Scene" type="Node2D"]
 
@@ -58,6 +61,30 @@ text = "# zaprogramuj trasę, np.:
 highlight_current_line = true
 show_line_numbers = true
 draw_tabs = true
+context_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+script = ExtResource( 12 )
+
+[node name="Block" type="ColorRect" parent="CanvasLayer/CodeField"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.247059 )
+
+[node name="StartWritingButton" type="Button" parent="CanvasLayer/CodeField"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.0
+margin_top = -16.0
+margin_right = 71.0
+margin_bottom = 16.0
+theme = ExtResource( 5 )
+text = "Zacznij pisać"
+
+[node name="WritingTimer" type="Timer" parent="CanvasLayer/CodeField"]
 
 [node name="Rules" type="Label" parent="CanvasLayer"]
 anchor_top = 1.0
@@ -118,6 +145,28 @@ window_title = "Syntax error!"
 margin_right = 83.0
 margin_bottom = 58.0
 theme = ExtResource( 5 )
+
+[node name="WinDialog" type="AcceptDialog" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -263.5
+margin_top = -65.5
+margin_right = 263.5
+margin_bottom = 65.5
+theme = ExtResource( 5 )
+window_title = "Zwyciętswo!"
+resizable = true
+dialog_text = "Udało Ci się dojść do końca z wynikiem %d!
+Podaj Swoje imię"
+script = ExtResource( 11 )
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/WinDialog"]
+margin_left = 8.0
+margin_top = 59.0
+margin_right = 519.0
+margin_bottom = 93.0
 
 [node name="Logo" type="TextureRect" parent="CanvasLayer"]
 margin_right = 64.0
@@ -324,6 +373,89 @@ margin_top = -384.0
 margin_bottom = -352.0
 text = "12"
 
+[node name="ShowLeaderBoardButton" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -128.0
+margin_bottom = 32.0
+theme = ExtResource( 5 )
+text = "Leader board"
+
+[node name="LeaderBoard" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
+script = ExtResource( 10 )
+
+[node name="LeaderBoardText" type="Label" parent="CanvasLayer/LeaderBoard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 325.0
+margin_top = 90.0
+margin_right = -347.0
+margin_bottom = 320.0
+theme = ExtResource( 5 )
+text = "a
+a
+a
+a
+
+a
+a
+
+a
+
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"
+max_lines_visible = 28
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/LeaderBoard"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -128.0
+margin_bottom = 32.0
+theme = ExtResource( 5 )
+text = "Wyjście"
+
+[node name="Title" type="Label" parent="CanvasLayer/LeaderBoard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_right = 100.0
+margin_bottom = 64.0
+theme = ExtResource( 5 )
+text = "Top programacze:"
+align = 1
+valign = 1
+
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 48, 463 )
 script = ExtResource( 3 )
@@ -363,6 +495,14 @@ margin_right = -352.0
 margin_bottom = -120.0
 color = Color( 0.12549, 0.12549, 0.12549, 1 )
 
+[connection signal="pressed" from="CanvasLayer/CodeField/StartWritingButton" to="CanvasLayer/CodeField" method="_on_StartWritingButton_pressed"]
+[connection signal="timeout" from="CanvasLayer/CodeField/WritingTimer" to="CanvasLayer/CodeField" method="_on_WritingTimer_timeout"]
+[connection signal="pressed" from="CanvasLayer/RunButton" to="CanvasLayer/CodeField" method="_on_RunButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/RunButton" to="Player" method="_on_RunButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/StopButton" to="Player" method="_on_StopButton_pressed"]
+[connection signal="add_player" from="CanvasLayer/WinDialog" to="CanvasLayer/LeaderBoard" method="_on_WinDialog_add_player"]
+[connection signal="confirmed" from="CanvasLayer/WinDialog" to="CanvasLayer/WinDialog" method="_on_WinDialog_confirmed"]
+[connection signal="pressed" from="CanvasLayer/ShowLeaderBoardButton" to="CanvasLayer/LeaderBoard" method="_on_ShowLeaderBoardButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/LeaderBoard/ExitButton" to="CanvasLayer/LeaderBoard" method="_on_ExitButton_pressed"]
+[connection signal="reset_game" from="Player" to="CanvasLayer/CodeField" method="_on_Player_reset_game"]
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_Timer_timeout"]

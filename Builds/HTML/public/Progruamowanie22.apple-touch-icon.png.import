@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Progruamowanie22.apple-touch-icon.png-9191d60e3e73c84af520fa73617838fe.stex"
+path="res://.import/Progruamowanie22.apple-touch-icon.png-37d6383db30b829ee2843a88b24a9b2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Builds/HTML/Progruamowanie22.apple-touch-icon.png"
-dest_files=[ "res://.import/Progruamowanie22.apple-touch-icon.png-9191d60e3e73c84af520fa73617838fe.stex" ]
+source_file="res://Builds/HTML/public/Progruamowanie22.apple-touch-icon.png"
+dest_files=[ "res://.import/Progruamowanie22.apple-touch-icon.png-37d6383db30b829ee2843a88b24a9b2e.stex" ]
 
 [params]
 

@@ -1,6 +1,8 @@
 extends Node2D
 class_name Player
 
+signal reset_game()
+
 export var score = 1000 setget set_score
 var starting_score = score
 export var step_cost = 100
@@ -11,6 +13,7 @@ onready var score_label: Label = $'/root/Main Scene/CanvasLayer/ScoreLabel'
 onready var code_field: TextEdit = $'/root/Main Scene/CanvasLayer/CodeField'
 onready var syntax_error_dialog: AcceptDialog = $'/root/Main Scene/CanvasLayer/SyntaxErrorDialog'
 onready var endgame_dialog: AcceptDialog = $'/root/Main Scene/CanvasLayer/EndgameDialog'
+onready var win_dialog: WinDialog = $'/root/Main Scene/CanvasLayer/WinDialog'
 onready var timer: Timer = $Timer
 onready var starting_postion = position
 
@@ -107,7 +110,8 @@ func run():
 	var finished_at = map.get_tile_name(position)
 	if finished_at == 'end':
 		print('winner with score %d' % score)
-		endgame_popup('Zwycięstwo!', 'Udało Ci się dojść do końca z wynikiem %d' % score)
+#		endgame_popup('Zwycięstwo!', 'Udało Ci się dojść do końca z wynikiem %d' % score)
+		win_dialog.activate(score)
 	else:
 		print('lost')
 		endgame_popup('Porażka!', 'Nie udało Ci się dojść do końca.')
@@ -127,6 +131,9 @@ func syntax_error(message: String) -> void:
 func set_score(new_score) -> void:
 	score = new_score
 	score_label.set_text('WYNIK: %d' % score)
+
+func change_score(change: int) -> void:
+	set_score(score + change)
 
 var step_north = Vector2(0, -step)
 var step_south = Vector2(0, step)
@@ -183,6 +190,7 @@ func reset():
 	for cellv in disabled_hearts:
 		map.set_cell(cellv.x, cellv.y, map.tile_set.find_tile_by_name('bonus'))
 	disabled_hearts.clear()
+	emit_signal('reset_game')
 
 var co
 func _on_RunButton_pressed():
@@ -192,7 +200,6 @@ func _on_RunButton_pressed():
 func _on_Timer_timeout():
 	if co is GDScriptFunctionState and co.is_valid():
 		co = co.resume()
-
 
 func _on_StopButton_pressed():
 	reset()
